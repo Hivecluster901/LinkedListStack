@@ -160,6 +160,29 @@ void test8()
 		chili::print( "*** Test 8 failed!\n" );
 	}
 }
+void test9()
+{
+	Stack s;
+	s.Push(5);
+	s.Push(3);
+
+	{
+		Stack s2;
+		s2.Push(123214);
+		s2.Push(123214);
+		s2 = s;
+		s2.Pop();
+	}
+
+	if (s.Size() == 2 && s.Pop() == 3)
+	{
+		chili::print("    Test 9 passed!\n");
+	}
+	else
+	{
+		chili::print("*** Test 9 failed!\n");
+	}
+}
 
 int main()
 {
@@ -178,6 +201,7 @@ int main()
 	test6();
 	test7();
 	test8();
+	test9();
 
 	_CrtDumpMemoryLeaks();
 	while( !_kbhit() );
